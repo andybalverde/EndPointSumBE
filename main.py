@@ -1,13 +1,7 @@
 from fastapi import FastAPI
-
 app = FastAPI()
 
-fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 
-
-@app.get("/items/")
-async def read_item(skip: int = 0, limit: int = 10):
-    #return fake_items_db[skip : skip + limit]
-    return {"int1": skip, "int2": limit, "Suma:": skip + limit}
-
-
+@app.get("/items/{item_id1}&{item_id2}")
+async def read_item(item_id1: int,item_id2: int):
+    return {"item_id1": item_id1, "item_id2": item_id2, "suma": item_id1 + item_id2}
